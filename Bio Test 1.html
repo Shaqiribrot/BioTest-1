@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diashow</title>
+    <style>
+        /* Stil für das Bildcontainer */
+        #slideshow {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Stil für die Bilder */
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="slideshow">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\1.jpg" alt="Bild 1">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\2.jpg" alt="Bild 2">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\3.jpg" alt="Bild 3">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\4.jpg" alt="Bild 4">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\5.jpg" alt="Bild 5">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\6.jpg" alt="Bild 6">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\7.jpg" alt="Bild 7">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\8.jpg" alt="Bild 8">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\9.jpg" alt="Bild 9">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\10.jpg" alt="Bild 10">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\11.jpg" alt="Bild 11">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\12.jpg" alt="Bild 12">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\13.jpg" alt="Bild 13">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\14.jpg" alt="Bild 14">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\15.jpg" alt="Bild 15">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\16.jpg" alt="Bild 16">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\17.jpg" alt="Bild 17">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\18.jpg" alt="Bild 18">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\19.jpg" alt="Bild 19">
+        <img src="C:\Users\tim4f\OneDrive\Dokumente\Bio Fotos 1\Fotos_files\20.jpg" alt="Bild 20">
+        
+
+    </div>
+
+    <script>
+        // Funktion zum Durchlaufen der Diashow
+        function startSlideshow() {
+            const images = document.querySelectorAll("#slideshow img");
+            const delay = 5000; // 5 Sekunden pro Bild
+
+            let currentIndex = 0;
+
+            function nextImage() {
+                images[currentIndex].style.display = "none";
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].style.display = "block";
+
+                // Nächstes Bild nach 'delay' Millisekunden anzeigen
+                setTimeout(nextImage, delay);
+            }
+
+            // Die Diashow starten
+            nextImage();
+        }
+
+        // Die Diashow beim Laden der Seite starten
+        window.onload = startSlideshow;
+
+        // Die Seite nach der Diashow schließen
+        setTimeout(function() {
+            window.close();
+        }, 20 * 5000); // 20 Bilder * 5 Sekunden pro Bild
+    </script>
+</body>
+</html>
