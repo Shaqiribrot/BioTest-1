@@ -1,77 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Diashow</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
     <style>
-        /* Stil für das Bildcontainer */
-        #slideshow {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
         }
-
-        /* Stil für die Bilder */
         img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
         }
     </style>
 </head>
 <body>
-    <div id="slideshow">
-        <img src="1.jpg" alt="Bild 1">
-        <img src="2.jpg" alt="Bild 2">
-        <img src="3.jpg" alt="Bild 3">
-        <img src="4.jpg" alt="Bild 4">
-        <img src="5.jpg" alt="Bild 5">
-        <img src="6.jpg" alt="Bild 6">
-        <img src="7.jpg" alt="Bild 7">
-        <img src="8.jpg" alt="Bild 8">
-        <img src="9.jpg" alt="Bild 9">
-        <img src="10.jpg" alt="Bild 10">
-        <img src="11.jpg" alt="Bild 11">
-        <img src="12.jpg" alt="Bild 12">
-        <img src="13.jpg" alt="Bild 13">
-        <img src="14.jpg" alt="Bild 14">
-        <img src="15.jpg" alt="Bild 15">
-        <img src="16.jpg" alt="Bild 16">
-        <img src="17.jpg" alt="Bild 17">
-        <img src="18.jpg" alt="Bild 18">
-        <img src="19.jpg" alt="Bild 19">
-        <img src="20.jpg" alt="Bild 20">
-        
-
+    <div id="image-container">
+        <!-- Images will be displayed here -->
     </div>
+    <button id="start-button">Start Slideshow</button>
 
     <script>
-        // Funktion zum Durchlaufen der Diashow
-        function startSlideshow() {
-            const images = document.querySelectorAll("#slideshow img");
-            const delay = 5000; // 5 Sekunden pro Bild
+        const images = [
+            "image1.jpg",
+            "image2.jpg",
+            // Add the file names of your 20 images here
+        ];
 
-            let currentIndex = 0;
+        const imageContainer = document.getElementById("image-container");
+        const startButton = document.getElementById("start-button");
 
-            function nextImage() {
-                images[currentIndex].style.display = "none";
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].style.display = "block";
+        let currentImageIndex = 0;
 
-                // Nächstes Bild nach 'delay' Millisekunden anzeigen
-                setTimeout(nextImage, delay);
+        function showNextImage() {
+            if (currentImageIndex < images.length) {
+                const image = new Image();
+                image.src = images[currentImageIndex];
+                imageContainer.innerHTML = '';
+                imageContainer.appendChild(image);
+
+                currentImageIndex++;
+
+                setTimeout(showNextImage, 5000); // Display each image for 5 seconds
+            } else {
+                // All images have been displayed, close the website
+                setTimeout(() => {
+                    window.close();
+                }, 5000);
             }
-
-            // Die Diashow starten
-            nextImage();
         }
 
-        // Die Diashow beim Laden der Seite starten
-        window.onload = startSlideshow;
-
-        // Die Seite nach der Diashow schließen
-        setTimeout(function() {
-            window.close();
-        }, 20 * 5000); // 20 Bilder * 5 Sekunden pro Bild
+        startButton.addEventListener("click", () => {
+            startButton.style.display = "none";
+            showNextImage();
+        });
     </script>
 </body>
 </html>
